@@ -79,6 +79,8 @@ bool HWLibs::processKext(KernelPatcher &patcher, size_t id, mach_vm_address_t sl
 
         bool sonoma144 = getKernelVersion() > KernelVersion::Sonoma ||
                          (getKernelVersion() == KernelVersion::Sonoma && getKernelMinorVersion() >= 4);
+        sonoma144 = true;
+
         if (sonoma144) {
             RouteRequestPlus request = {"_psp_cmd_km_submit", wrapPspCmdKmSubmit, this->orgPspCmdKmSubmit,
                 kPspCmdKmSubmitPattern14_4, kPspCmdKmSubmitMask14_4};
